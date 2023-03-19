@@ -17,6 +17,10 @@ theme:
         name: Switch to light mode
 
 markdown_extensions:
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
