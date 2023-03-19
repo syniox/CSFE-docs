@@ -1,14 +1,13 @@
 # Crowd sourcing platform (front-end)
 
-## 注意事项
+## Hints
 
 - 终端输入`git config --global user.name <学号> && git config --global user.email <学号>@secoder.net`让软工平台记录你写的代码
-    - 或在某个git仓库目录下设置仅对该仓库生效的个人信息：`git config user.name <学号> && git config user.email <学号>@secoder.net`
-- 确保仓库存在合理的`.gitignore`文件，忽略掉依赖和程序运行生成的文件，防止成为助教所说的第一周提交几十万行代码的组
+    - 或许更好的方案：在某个git仓库目录下设置仅对该仓库生效的个人信息：`git config user.name <学号> && git config user.email <学号>@secoder.net`
+- 确保仓库存在合理的`.gitignore`文件，忽略掉依赖和程序运行生成的文件，以免成为助教所说的第一周提交几十万行代码的组x
 
 ## TODO-List
 
-### 基础设施
 - [ ] Basis
     - [ ] nuxi typecheck
     - [ ] eslint
