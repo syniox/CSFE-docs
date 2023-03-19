@@ -1,4 +1,17 @@
-site_name: crowd sourcing front-end
+site_name: Crowd sourcing platform (front-end) docs
+repo_url: https://github.com/syniox/CSFE-docs
+repo_name: CSFE-docs
 
 theme:
   name: material
+  language: zh
+  palette:
+    - primary: white
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
