@@ -1,6 +1,6 @@
 site_name: Crowd sourcing platform (front-end) docs
-repo_url: https://github.com/syniox/CSFE-docs
-repo_name: CSFE-docs
+repo_url: https://github.com/syniox/CSPFE-docs
+repo_name: CSPFE-docs
 
 theme:
   name: material
