@@ -1,17 +1,15 @@
 # Crowd sourcing platform (front-end)
 
+## TODO-List
 
-Notes:
+### 基础设施
+- tests
+  - [ ] nuxi typecheck
+- apis
+  - [ ] 需求方/发布方识别
+    - [ ] 前端是否分开注册，是否分开登录
+    - [ ] 前端发送用户类别，让后端判断是否正确？后端返回用户类型？
 
-nuxi typecheck
 
+### 实现架构
 
-
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
