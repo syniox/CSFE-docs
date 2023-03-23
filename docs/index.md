@@ -9,13 +9,13 @@
 
 - sep容器管理里面可以看log
 - 输出调试：`console.log(...)`
-- 由于CORS问题，前端反向代理是必须的。每次build完用nginx反代太耗时间，但nuxt似乎不大支持rewrites功能，在考虑用middleware实现或。
+- 由于CORS问题，前端反向代理是必须的。每次build完用nginx反代太耗时间，但nuxt似乎不大支持rewrites功能，在考虑用middleware实现或找现成轮子。
 
 ## TODO-List
 
 
 - [ ] Basis
-    - [ ] **实现nuxt rewrites**
+    - [ ] **实现nuxt反向代理**
     - [ ] nuxi typecheck
     - [ ] eslint
     - [ ] sonarqube
