@@ -15,7 +15,7 @@
 
 
 - [ ] Basis
-    - [ ] **实现nuxt反向代理**
+    - [x] **实现nuxt反向代理**
     - [ ] nuxi typecheck
     - [ ] eslint
     - [ ] sonarqube
