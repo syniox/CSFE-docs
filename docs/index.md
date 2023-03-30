@@ -17,8 +17,9 @@
 - [ ] Basis
     - [x] **实现nuxt反向代理**
     - [ ] nuxi typecheck
-    - [ ] eslint
-    - [ ] sonarqube
+    - [x] eslint
+    - [x] sonarqube
+    - [ ] async函数使用 （待参考小作业）
 - [ ] APIs
     - [x] 需求方/发布方识别 考虑因素：
         - [x] ~~前端发送用户类别让后端判断是否正确，还是让后端返回用户类型？~~ 后端API会返回role
