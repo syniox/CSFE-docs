@@ -13,14 +13,13 @@
 
 ## TODO-List
 
-
 - [ ] Basis
     - [x] **实现nuxt反向代理**
     - [ ] nuxi typecheck
     - [x] eslint
     - [x] sonarqube
     - [ ] async函数使用 （待参考小作业）
-    - [ ] master dev 双部署
+    - [x] master dev 双部署
 - [ ] APIs
     - [x] 需求方/发布方识别 考虑因素：
         - [x] ~~前端发送用户类别让后端判断是否正确，还是让后端返回用户类型？~~ 后端API会返回role
@@ -32,9 +31,25 @@
         - [x] 错误信息等后端API？
         - [x] CORS？
 - [ ] Pages
-    - [ ] CSS选型 ChatWJS or UI组件库
-    - [ ] 不同管理人员的登录界面？
+    - [x] CSS选型 ~~ChatWJS or UI组件库~~ Element ui plus
+    - [x] 不同管理人员的登录界面？
 
 
 ## 实现架构
+
+现有架构见gitlab
+
+### users/
+
+#### login/
+#### register/
+
+### tasks/
+
+#### [id]/
+
+##### modify
+##### upload
+
+#### Establish
 
