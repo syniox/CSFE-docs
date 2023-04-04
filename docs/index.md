@@ -1,5 +1,12 @@
 # Crowd sourcing platform (front-end)
 
+
+## 开发规范(来自yjx的记录)：（记得开放dev的容器）
+1. dev从master拉取，dev和master都只能被merge，不要push进去
+2. 不要merge进master除非是迅速改bug，可以拉取一个分支并且merge进去，正确的做法是merge进dev，确定dev没有问题才能merge dev => master
+3. 一定维护master的稳定性，不稳定测试和开发在dev上进行，保证演示不出bug
+4. 每一个commit后面#加上issue
+
 ## Hints
 
 - 前端master已开启分支保护 请使用merge向主分支提交信息
