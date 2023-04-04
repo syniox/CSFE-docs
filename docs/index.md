@@ -1,11 +1,17 @@
 # Crowd sourcing platform (front-end)
 
 
-## 开发规范(来自yjx的记录)：（记得开放dev的容器）
+## 开发规范(来自yjx的记录)
+
 1. dev从master拉取，dev和master都只能被merge，不要push进去
 2. 不要merge进master除非是迅速改bug，可以拉取一个分支并且merge进去，正确的做法是merge进dev，确定dev没有问题才能merge dev => master
 3. 一定维护master的稳定性，不稳定测试和开发在dev上进行，保证演示不出bug
 4. 每一个commit后面#加上issue
+
+## 故障速查
+
+1. 确保当前正在访问的页面不是cached的页面（disable cache/无痕模式）
+2. 检查报错信息正误
 
 ## Hints
 
