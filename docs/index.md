@@ -17,6 +17,14 @@
 1. 确保当前正在访问的页面不是cached的页面（disable cache/无痕模式）
 2. 检查报错信息正误
 
+## apifox补充
+
+tasks.status:
+- PENDING = 1 需求方未确认
+- RECRUITING = 2 招募中
+- IN PROGRESS = 3 满人了，正在标
+- COMPLETED = 4 trivial
+
 ## Hints
 
 - 前端master已开启分支保护 请使用merge向主分支提交信息
