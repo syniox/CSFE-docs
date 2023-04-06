@@ -1,5 +1,9 @@
 # Crowd sourcing platform (front-end)
 
+## 需求文档
+
+[基础文档](https://docs.qq.com/doc/DV2VGcVhLWXhVcHZt)
+[需求QA](https://docs.qq.com/doc/DZVFuRUFvWWhiUkln)
 
 ## 开发规范(来自yjx的记录)
 
