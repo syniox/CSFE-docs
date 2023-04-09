@@ -42,24 +42,26 @@ tasks.status:
 
 ## TODO-List
 
-- [ ] Basis
+- [ ] el-alert替代alert
+
+- [x] Basis
     - [x] **实现nuxt反向代理**
-    - [ ] nuxi typecheck
+    - [x] nuxi typecheck
     - [x] eslint
     - [x] sonarqube
-    - [ ] async函数使用 （待参考小作业）
+    - [x] async函数使用 （待参考小作业）
     - [x] master dev 双部署
-- [ ] APIs
+- [x] APIs
     - [x] 需求方/发布方识别 考虑因素：
         - [x] ~~前端发送用户类别让后端判断是否正确，还是让后端返回用户类型？~~ 后端API会返回role
         - [x] 前端是否分开注册，是否分开登录
     - [x] ~~文档中权限申请的含义？一个用户是否可以身兼数职~~ 一用户一身份，管理员审核需求方发布的内容
-    - [ ] 页面鉴权（前端可使用auth middleware配置）后端是否需要一个接口判断该用户是否有权限访问该页面
-    - [ ] 登录/注册页错误处理/显示
+    - [x] 页面鉴权（前端可使用auth middleware配置）后端是否需要一个接口判断该用户是否有权限访问该页面
+    - [x] 登录/注册页错误处理/显示
         - [ ] 页面UI：或可snackbar
         - [x] 错误信息等后端API？
         - [x] CORS？
-- [ ] Pages
+- [x] Pages
     - [x] CSS选型 ~~ChatWJS or UI组件库~~ Element ui plus
     - [x] 不同管理人员的登录界面？
 
