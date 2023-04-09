@@ -17,6 +17,10 @@
 1. 确保当前正在访问的页面不是cached的页面（disable cache/无痕模式）
 2. 检查报错信息正误
 
+## Issues
+
+- [ ] 前端注册用户名带'-'
+
 ## apifox补充
 
 tasks.status:
