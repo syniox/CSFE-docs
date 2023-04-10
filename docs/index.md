@@ -24,6 +24,7 @@
 ## apifox补充
 
 tasks.status:
+
 - PENDING = 1 需求方未确认
 - RECRUITING = 2 招募中
 - IN PROGRESS = 3 满人了，正在标
@@ -33,6 +34,7 @@ tasks.status:
 
 - 前端master已开启分支保护 请使用merge向主分支提交信息
 - 可将todo分成gitlab上的issue（然后可以assign给自己表示认领这个任务，当然assign别人也可行），可以开PR时引用该issue
+- commit规范参考：https://www.conventionalcommits.org/en/v1.0.0/
 
 ### 调试
 
