@@ -40,9 +40,10 @@ tasks.status:
 - 输出调试：`console.log(...)`
 - 由于CORS问题，前端反向代理是必须的。每次build完用nginx反代太耗时间，但nuxt似乎不大支持rewrites功能，在考虑用middleware实现或找现成轮子。
 
-## TODO-List
+## Highlights
 
 - [ ] el-alert替代alert
+- [ ] useFetch(vueuse) + vue Suspense进行async加载
 
 - [x] Basis
     - [x] **实现nuxt反向代理**
