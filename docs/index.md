@@ -42,6 +42,19 @@ tasks.status:
 - 输出调试：`console.log(...)`
 - 由于CORS问题，前端反向代理是必须的。每次build完用nginx反代太耗时间，但nuxt似乎不大支持rewrites功能，在考虑用middleware实现或找现成轮子。
 
+## 待讨论问题
+
+1. 关于动态路由的问题 我看到vue-router要加':'表示动态，但是nuxt有file-based routing，使用navigateTo时不必单独加':'
+
+现在不统一之后盖起来
+如果我没理解错jxgg的思路的话，我目前觉得是有三条路
+
+- 就按现在这样，navigateTo然后route.$params.var.slice(1)拼接的时候把':'删掉（又不是不能用.jpg
+- 走nuxt路线 直接上navigate不加':'
+- 走vue router路线 用router.push实现跳转
+
+2. 已完成任务是否开放“审”的按钮？改成查看？
+
 ## Highlights
 
 - [ ] el-alert替代alert
