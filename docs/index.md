@@ -85,11 +85,17 @@ tasks.status:
 ## 测试架构
 
 测试框架[vitest](https://vitest.dev)，使用[nuxt-vitest](https://github.com/danielroe/nuxt-vitest)与nuxt进行整合。  
-组件框架@vue/test-utils，想调试组件内逻辑必须品，使用文档[这里看](https://test-utils.vuejs.org)
+组件框架@vue/test-utils，想调试组件内逻辑必须品，使用文档[这里看](https://test-utils.vuejs.org)  
 E2E框架目前没有（看上去不要求x
 
-测试库会识别仓库内所有的*.tests.(ts+js)或*.spec.(ts+js)文件，但是建议测试文件放在tests/下或者和组件在一起
-示例：`~/tests/TaskPresent.spec.ts`
+建议参考:
+
+- https://vuejs.org/guide/scaling-up/testing.html#testing
+- [vitest](https://vitest.dev)
+- [@vue/test-utils](https://test-utils.vuejs.org)
+
+测试库会识别仓库内所有的*.tests.(ts+js)或*.spec.(ts+js)文件，但是建议把测试文件放在tests/下或者和组件在一起  
+示例：tests_sy分支下的`~/tests/components/TaskPresent.spec.ts`
 
 
 ## 实现架构
