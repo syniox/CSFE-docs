@@ -2,7 +2,7 @@
 
 ## 需求文档
 
-[基础文档](https://docs.qq.com/doc/DV2VGcVhLWXhVcHZt)
+[基础文档](https://docs.qq.com/doc/DV2VGcVhLWXhVcHZt)  
 [需求QA](https://docs.qq.com/doc/DZVFuRUFvWWhiUkln)
 
 ## 开发规范(来自yjx的记录)
@@ -82,21 +82,34 @@ tasks.status:
     - [x] 不同管理人员的登录界面？
 
 
+## 测试架构
+
+测试框架[vitest](https://vitest.dev)，使用[nuxt-vitest](https://github.com/danielroe/nuxt-vitest)与nuxt进行整合。  
+组件框架@vue/test-utils，想调试组件内逻辑必须品，使用文档[这里看](https://test-utils.vuejs.org)
+E2E框架目前没有（看上去不要求x
+
+测试库会识别仓库内所有的*.tests.(ts+js)或*.spec.(ts+js)文件，但是建议测试文件放在tests/下或者和组件在一起
+示例：`~/tests/TaskPresent.spec.ts`
+
+
 ## 实现架构
+
+
+### 代码架构
 
 现有架构见gitlab
 
-### users/
+#### users/
 
-#### login/
-#### register/
+##### login/
+##### register/
 
-### tasks/
+#### tasks/
 
-#### [id]/
+##### [id]/
 
-##### modify
-##### upload
+###### modify
+###### upload
 
-#### Establish
+##### Establish
 
