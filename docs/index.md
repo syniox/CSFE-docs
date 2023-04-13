@@ -60,6 +60,8 @@ tasks.status:
 - [ ] el-alert替代alert
 - [ ] useFetch(vueuse) + vue Suspense进行async加载
 
+- [ ] nuxt faster dev start
+
 - [x] Basis
     - [x] **实现nuxt反向代理**
     - [x] nuxi typecheck
