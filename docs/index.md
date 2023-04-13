@@ -57,10 +57,11 @@ tasks.status:
 
 ## Highlights
 
-- [ ] el-alert替代alert
+- [ ] ELMessage替代alert
 - [ ] useFetch(vueuse) + vue Suspense进行async加载
-
 - [ ] nuxt faster dev start
+
+---
 
 - [x] Basis
     - [x] **实现nuxt反向代理**
