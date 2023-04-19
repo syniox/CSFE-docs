@@ -60,7 +60,8 @@ tasks.status:
 - [ ] ELMessage替代alert
 - [ ] useFetch(vueuse) + vue Suspense进行async加载
 - [ ] nuxt faster dev start
-- [ ] ModifyTask任务缓存设置
+- [ ] ModifyTask 任务缓存设置
+- [ ] TaskPost 更新中介选项内容
 
 ---
 
