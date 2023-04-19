@@ -60,6 +60,7 @@ tasks.status:
 - [ ] ELMessage替代alert
 - [ ] useFetch(vueuse) + vue Suspense进行async加载
 - [ ] nuxt faster dev start
+- [ ] ModifyTask任务缓存设置
 
 ---
 
@@ -112,6 +113,8 @@ Task 的 status 增加了一种状态 zombie（编号为5），表示在上一�
 1. 任务确认时。任务确认时会按照 credit_lower_bound 尝试确定一批分发对象（顺序分发），如果此时就出现了标注方用户不足的情况，confirm 请求不会成功，任务将仍保持在 pending 状态，会返回给前端一个错误，提示需求方尝试降低 credit_lower_bound 进行 confirm。  
 2. 有标注方用户拒绝了任务，或超时，或标注结果被拒绝。后端会尝试按照 credit_lower_bound 递补分发对象。但这个递补可能由于已经没有足够的信用分够高的标注方用户而失败，此时任务状态会被置为 zombie。  
 3. 需求方尝试干预分发。1）对于处于 recruiting 状态的任务，需求方可以使用 modifyCreditRestriction 请求调整信用分限制（不会立竿见影地影响分发对象列表，但会影响之后的分发递补等行为），也可以使用 refreshDistribution 请求尝试更新一批分发对象（已经接受任务的标注方不会受到影响，被更新掉的标注方不会被视为拒绝了这个任务，且这个请求不会引发标注方不足的问题，因为标注方不足时会只替换一部分分发对象）。2）对于处于 zombie 状态的任务，考虑到需求方可以降低 credit 限制，而且平台可能会有新注册的标注方用户，以及可能会有标注方用户信用分升高，达到被分发的标注，因此需求方可以尝试通过两个请求来分发 zombie 任务。其一是需求方可以使用 modifyCreditRestriction 请求调整信用分限制，对于 zombie 任务，调用该请求后会立即用新标准试图进行分发，因此任务有可能立即从 zombie 状态转为 recruiting；其二是需求方可以调用refreshZombie请求来尝试检查按照现有的 credit 标准有没有新的、足够多的符合分发标准的标注方，从而尝试将任务从 zombie 状态转为 recruiting，如果失败，会返回一个提示需求方先降低信用分标准的错误。  
+
+
 
 
 ## 实现架构
