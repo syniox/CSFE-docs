@@ -104,7 +104,7 @@ E2E框架目前没有（看上去不要求x
 
 ## Spec
 
-关于任务分发设计的说明：  
+### 任务分发设计说明
 模型的调整：  
 在 task 模型中增加了 distribute_user_list 字段，记录了所有可见该任务的需求方的uid，这个数组的长度总是等于任务所需人数（除了标注方人数不足，任务处于 zombie 状态的特殊情况，以及数据库中现有的按照没有该字段的原设计所保存的任务）。前端在向标注方推送任务前需逐任务加一检查。  
 Task 模型还增加了 credit_lower_bound 字段，表示任务分发时对标注方信用分的限制。这个字段会在任务 confirm 时确定，后续对于 recruiting/zombie 状态的任务可以通过 modifyCreditRestriction 接口修改（见API文档）。confirm 请求也略有调整，可以在 body 中传入一个键为“credit_lower_bound”的整形数作为分发信用分限制，为了做到向前兼容，body中也可以不含这个值，此时视为使用默认的信用分阈值 90.     
@@ -113,9 +113,20 @@ Task 的 status 增加了一种状态 zombie（编号为5），表示在上一�
 在以下时机可能涉及任务分发目标（即 distribute_user_list）的变化：  
 1. 任务确认时。任务确认时会按照 credit_lower_bound 尝试确定一批分发对象（顺序分发），如果此时就出现了标注方用户不足的情况，confirm 请求不会成功，任务将仍保持在 pending 状态，会返回给前端一个错误，提示需求方尝试降低 credit_lower_bound 进行 confirm。  
 2. 有标注方用户拒绝了任务，或超时，或标注结果被拒绝。后端会尝试按照 credit_lower_bound 递补分发对象。但这个递补可能由于已经没有足够的信用分够高的标注方用户而失败，此时任务状态会被置为 zombie。  
-3. 需求方尝试干预分发。1）对于处于 recruiting 状态的任务，需求方可以使用 modifyCreditRestriction 请求调整信用分限制（不会立竿见影地影响分发对象列表，但会影响之后的分发递补等行为），也可以使用 refreshDistribution 请求尝试更新一批分发对象（已经接受任务的标注方不会受到影响，被更新掉的标注方不会被视为拒绝了这个任务，且这个请求不会引发标注方不足的问题，因为标注方不足时会只替换一部分分发对象）。2）对于处于 zombie 状态的任务，考虑到需求方可以降低 credit 限制，而且平台可能会有新注册的标注方用户，以及可能会有标注方用户信用分升高，达到被分发的标注，因此需求方可以尝试通过两个请求来分发 zombie 任务。其一是需求方可以使用 modifyCreditRestriction 请求调整信用分限制，对于 zombie 任务，调用该请求后会立即用新标准试图进行分发，因此任务有可能立即从 zombie 状态转为 recruiting；其二是需求方可以调用refreshZombie请求来尝试检查按照现有的 credit 标准有没有新的、足够多的符合分发标准的标注方，从而尝试将任务从 zombie 状态转为 recruiting，如果失败，会返回一个提示需求方先降低信用分标准的错误。  
+3. 需求方尝试干预分发。
+    1. 对于处于 recruiting 状态的任务，需求方可以使用 modifyCreditRestriction 请求调整信用分限制（不会立竿见影地影响分发对象列表，但会影响之后的分发递补等行为），也可以使用 refreshDistribution 请求尝试更新一批分发对象（已经接受任务的标注方不会受到影响，被更新掉的标注方不会被视为拒绝了这个任务，且这个请求不会引发标注方不足的问题，因为标注方不足时会只替换一部分分发对象）。
+    2. 对于处于 zombie 状态的任务，考虑到需求方可以降低 credit 限制，而且平台可能会有新注册的标注方用户，以及可能会有标注方用户信用分升高，达到被分发的标注，因此需求方可以尝试通过两个请求来分发 zombie 任务。其一是需求方可以使用 modifyCreditRestriction 请求调整信用分限制，对于 zombie 任务，调用该请求后会立即用新标准试图进行分发，因此任务有可能立即从 zombie 状态转为 recruiting；其二是需求方可以调用refreshZombie请求来尝试检查按照现有的 credit 标准有没有新的、足够多的符合分发标准的标注方，从而尝试将任务从 zombie 状态转为 recruiting，如果失败，会返回一个提示需求方先降低信用分标准的错误。  
 
 
+### 中介
+1. task模型中增加bool类型的entrust_intermediary字段，需要在confirm的时候设置；增加intermediary_id字段，若任务交给中介且中介接单后设置为中介id。
+2. 任务增加intermediary_commision字段，default为0，若需要委托中介则需设置，表示给中介的提成。并且平台会固定抽成一定reward的金额，需要前端展示一下抽成积分金额，后端计算的时候check需求方积分余额是否不小于平台抽成+中介抽成+需求方总抽成的值。
+3. 若需求方选择委托中介分发，则不可调用refreshDistribution、refreshZombie接口，完全交给中介负责。
+4. 中介可查看所有被委托的任务（/tasks/getEntrustedTasks）并选择接单(/tasks/receiveOrder)，可以查看自己接的单（/tasks/getOrders）。
+5. 简单起见，不可更换被委托的中介，中介接单的任务完成后就才可获得需求方提供的抽成积分。
+6. 中介可以查看当前的worker(/users/intermediaryViewWorkers)，手动选择标注方对接单的任务进行分发(tasks/intermediaryDistribute)，分发的用户不可超过assign_num。若没有足够的用户可供分发，则需要中介一段时间后再查看并分发以确保任务完成，后端不会对此进行处理。
+一点需要修改的地方：
+积分报酬不能为0，不管是给标注方还是给中介
 
 
 ## 实现架构
