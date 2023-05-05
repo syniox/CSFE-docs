@@ -25,6 +25,7 @@
 - [ ] manager页面的返回操作
 - [ ] users/intermediary/dotask 的上边栏
 - [ ] 中介委托逻辑
+- [ ] upperFrame requirement
 
 ## apifox补充
 
