@@ -26,6 +26,7 @@
 - [ ] users/intermediary/dotask 的上边栏
 - [ ] 中介委托逻辑
 - [ ] upperFrame requirement
+- [ ] 委托中介费用不能为0
 
 ## apifox补充
 
